@@ -11,7 +11,7 @@ import {
 
 function ContactPage() {
   return (
-    <section id="contact" className=" bg-gray-100">
+    <section id="contact" className="py-8 bg-gray-100">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center text-[rgba(40,58,90,0.9)] mb-12">
           Contact Us
