@@ -30,10 +30,10 @@ function FeaturedJalabias() {
 
   return (
     <section id="products" className="pb-4 bg-gray-100">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <h3 className="text-4xl font-bold text-center mb-4 text-blue-900">Featured Jalabias</h3>
         {/* Mini Navbar for Categories */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-8 flex-wrap gap-4">
           {categories.map(category => (
             <button
               key={category}
@@ -41,22 +41,25 @@ function FeaturedJalabias() {
                 setActiveCategory(category);
                 setVisibleCount(10); // Reset the visible count when changing category
               }}
-              className={`mx-2 px-4 py-2 rounded-full transition-colors duration-200 ${
-                activeCategory === category
+              className={`rounded-full transition-colors duration-200 min-w-[80px] 
+                ${activeCategory === category
                   ? "bg-[rgba(40,58,90,0.9)] text-white"
-                  : "bg-white text-[rgba(40,58,90,0.9)] border border-[rgba(40,58,90,0.9)]"
-              }`}
+                  : "bg-white text-[rgba(40,58,90,0.9)] border border-[rgba(40,58,90,0.9)]"}
+                px-3 py-2 text-sm md:px-4 md:py-2 md:text-base`}
             >
               {category}
             </button>
           ))}
         </div>
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Responsive Product Grid */}
+        <div
+          className="grid gap-4 justify-center"
+          style={{ gridTemplateColumns: "repeat(auto-fit, 240px)" }}
+        >
           {visibleProducts.map(product => (
             <div
               key={product.id}
-              className="bg-white rounded-lg shadow-md p-4 transform transition duration-300 hover:scale-105 hover:shadow-xl"
+              className="bg-white rounded-lg shadow-md p-4 transform transition duration-300 hover:scale-105 hover:shadow-xl w-[240px]"
             >
               {/* Image at the top */}
               <img
@@ -91,7 +94,6 @@ function FeaturedJalabias() {
             </div>
           ))}
         </div>
-        {/* Toggle Button */}
         {filteredProducts.length > 10 && (
           <div className="flex justify-center mt-8">
             {visibleCount === filteredProducts.length ? (
